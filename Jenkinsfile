@@ -1,27 +1,13 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'mvn --version'
-                sh 'echo "Hello World"'
-                sh '''
-                     echo "Multiline shell steps works too"
-                     ls -lah
-                   '''
-                   }
-                        }
-        stage('Deploy') {
-            steps {         
-                retry(3) {
-                    sh 'echo ./flakey-deploy.sh'
-                         }
-                timeout(time: 3, unit: 'MINUTES') {
-                    sh 'echo ./health-check.sh'
-                                                   }
-                  }        
-                        } 
-post {
+                sh 'echo "Fail!"; exit 1'
+            }
+        }
+    }
+    post {
         always {
             echo 'This will always run'
         }
@@ -39,7 +25,6 @@ post {
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
-             }
 }
 
 
