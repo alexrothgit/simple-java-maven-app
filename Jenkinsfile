@@ -11,12 +11,12 @@ pipeline {
        stage('build') {
             steps {
                 sh 'mvn --version'
-                sh 'echo printenv'
+                sh ' printenv'
             }
        }
         stage('Test') {
             steps {
-                sh 'echo "Fail!"; exit 0'
+                sh 'echo "Success!"; exit 0'
             }
         }
     }
