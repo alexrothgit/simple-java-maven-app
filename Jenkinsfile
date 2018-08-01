@@ -1,5 +1,6 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent { docker { image 'maven:3.3.3' } 
+    }
     
     environment {
         DISABLE_AUTH = 'true'
@@ -10,7 +11,7 @@ pipeline {
        stage('build') {
             steps {
                 sh 'mvn --version'
-                sh 'printenv'
+                sh 'echo printenv'
             }
        }
         stage('Test') {
