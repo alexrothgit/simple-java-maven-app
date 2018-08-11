@@ -26,12 +26,22 @@ pipeline {
                 sh 'mvn test'
                 sh 'echo "Success???"'
             }
+            post {
+                 always {
+                          echo 'This will always run after stage TEST'
+                          junit 'target/surefire-reports/*.xml'
+                  }
+            }
         }
+        stage('Deliver') { 
+            steps {
+                sh './jenkins/scripts/deliver.sh' 
+            }
+        }  
     }
     post {
         always {
             echo 'This will always run'
-            junit 'target/surefire-reports/*.xml'
         }
         success {
             echo 'This will run only if successful'
