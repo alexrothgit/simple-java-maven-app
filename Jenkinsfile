@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'myjenkinsslave:latest' } 
+    agent { docker { image 'alexroth/myjenkinsslave:latest' } 
     }
     
     environment {
