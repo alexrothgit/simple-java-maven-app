@@ -3,7 +3,7 @@ pipeline {
     agent { 
         docker { 
             image 'maven:3-alpine'
-                     args '-v /root/.m2:/root/.m2'
+            args '-v /root/.m2:/root/.m2'
         } 
     }
     
@@ -23,13 +23,15 @@ pipeline {
        }
         stage('Test') {
             steps {
-                sh 'echo "Success!"; exit 0'
+                sh 'mvn test'
+                sh 'echo "Success???"'
             }
         }
     }
     post {
         always {
             echo 'This will always run'
+            junit 'target/surefire-reports/*.xml'
         }
         success {
             echo 'This will run only if successful'
