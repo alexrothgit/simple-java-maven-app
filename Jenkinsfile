@@ -1,8 +1,14 @@
 pipeline {
-    agent { docker { image 'alexroth/myjenkinsslave:latest' } 
+    /* agent { docker { image 'alexroth/myjenkinsslave:latest' }  */
+    agent { 
+        docker { 
+            image 'maven:3-alpine'
+                     args '-v /root/.m2:/root/.m2'
+        } 
     }
     
     environment {
+        // some example vars
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
     }
@@ -12,6 +18,7 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh ' printenv'
+                sh 'mvn -B -DskipTests clean package'
             }
        }
         stage('Test') {
