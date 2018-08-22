@@ -12,8 +12,14 @@ pipeline {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
     }
-    
     stages {
+       stage('QA') {
+            steps {
+                sh 'mvn --version'
+                sh ' printenv'
+                sh 'mvn sonar:sonar   -Dsonar.organization=alexrothgit-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=ae4d20e7653555e6d1329ab37c2ace712898fa70'
+            }
+       }    
        stage('build') {
             steps {
                 sh 'mvn --version'
