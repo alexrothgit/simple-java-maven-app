@@ -17,7 +17,10 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh ' printenv'
-                sh 'mvn sonar:sonar -Dsonar.organization="alexrothgit-github" -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c63f2b840301ce2dff01780982c783982f1e812b'
+                sh 'mvn sonar:sonar \
+  -Dsonar.organization=alexrothgit-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=a11042961e5f1b21bd0e3e26d56f28ff5063e187'
             }
        }    
        stage('build') {
