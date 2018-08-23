@@ -22,7 +22,8 @@ pipeline {
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=a11042961e5f1b21bd0e3e26d56f28ff5063e187' */
                 
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://vmaster:9000'
+                // sh 'mvn sonar:sonar -Dsonar.host.url=http://vmaster:9000'
+                sh 'mvn sonar:sonar'
             }
        }    
        stage('build') {
