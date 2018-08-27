@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Code QA') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://vnode1:9000 -Dsonar.login=70f6fadb2b55b560bb56fbd7029daa9ad9ab0b78'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.50.3:9000 -Dsonar.login=70f6fadb2b55b560bb56fbd7029daa9ad9ab0b78'
             }
         }
         stage('Build') {
