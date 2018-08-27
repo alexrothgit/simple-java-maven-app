@@ -2,9 +2,9 @@ pipeline {
     /* agent { docker { image 'alexroth/myjenkinsslave:latest' }  */
     agent { 
         docker { 
-            //image 'maven:3-alpine'
-           // args '-v /root/.m2:/root/.m2'
-            image ' myjenkinsslave:latest'
+           image 'maven:3-alpine'
+           args '-v /root/.m2:/root/.m2'
+           // image ' myjenkinsslave:latest'
 
         } 
     }
@@ -24,7 +24,7 @@ pipeline {
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=a11042961e5f1b21bd0e3e26d56f28ff5063e187' */
                 
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://vnode1:9000 -Dsonar.login=70f6fadb2b55b560bb56fbd7029daa9ad9ab0b78'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://vnode1:9000 -Dsonar.login=-Dsonar.login=70f6fadb2b55b560bb56fbd7029daa9ad9ab0b78'
                 // sh 'mvn sonar:sonar'
             }
        }    
