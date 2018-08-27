@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('Code QA') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://vnode1:9000 -Dsonar.login=70f6fadb2b55b560bb56fbd7029daa9ad9ab0b78'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
